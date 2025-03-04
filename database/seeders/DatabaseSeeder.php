@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             CategorySeeder::class,
             SettingSeeder::class,
+            UserSeeder::class,
+            MediaSeeder::class,
+            ContentSeeder::class,
         ]);
     }
 }
