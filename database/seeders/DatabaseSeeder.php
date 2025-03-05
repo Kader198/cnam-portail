@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             MediaSeeder::class,
             ContentSeeder::class,
+            NewsSeeder::class,
+            MenuSeeder::class,
+            GlossarySeeder::class,
+            
         ]);
     }
 }

@@ -17,7 +17,6 @@ class Category extends Model
         'name_ar',
         'description',
         'description_ar',
-        'parent_category_id',
         'slug',
         'slug_ar'
     ];

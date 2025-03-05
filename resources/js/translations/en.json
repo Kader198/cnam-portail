@@ -1,0 +1,124 @@
+{
+  "content": {
+    "form": {
+      "title": "Content Form",
+      "title_en": "Title (English)",
+      "title_ar": "Title (Arabic)",
+      "content_type": "Content Type",
+      "content_type_placeholder": "Select a type",
+      "content_types": {
+        "article": "Article",
+        "news": "News",
+        "page": "Page",
+        "announcement": "Announcement"
+      },
+      "publication_status": "Publication Status",
+      "published": "Published",
+      "content_en": "Content (English)",
+      "content_ar": "Content (Arabic)",
+      "meta_description_en": "Meta Description (English)",
+      "meta_description_ar": "Meta Description (Arabic)",
+      "keywords_en": "Keywords (English)",
+      "keywords_ar": "Keywords (Arabic)",
+      "keywords_placeholder": "Comma-separated keywords",
+      "featured_image": "Featured Image URL",
+      "buttons": {
+        "cancel": "Cancel",
+        "create": "Create Content",
+        "update": "Update Content"
+      },
+      "messages": {
+        "create_success": "Content created successfully",
+        "create_error": "Failed to create content",
+        "update_success": "Content updated successfully",
+        "update_error": "Failed to update content"
+      }
+    }
+  },
+  "users": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "password_confirmation": "Confirm Password",
+      "roles": "Role",
+      "roles_placeholder": "Select a role",
+      "buttons": {
+        "cancel": "Cancel",
+        "create": "Create User",
+        "update": "Update User"
+      },
+      "messages": {
+        "create_success": "User created successfully",
+        "create_error": "Failed to create user",
+        "update_success": "User updated successfully",
+        "update_error": "Failed to update user"
+      }
+    }
+  },
+  "roles": {
+    "form": {
+      "role_name": "Role Name (English)",
+      "role_name_ar": "Role Name (Arabic)",
+      "description": "Description (English)",
+      "description_ar": "Description (Arabic)",
+      "permission_level": "Permission Level",
+      "permission_level_placeholder": "Select permission level",
+      "permission_level_option": "Level {{level}}",
+      "buttons": {
+        "cancel": "Cancel",
+        "create": "Create Role",
+        "update": "Update Role"
+      },
+      "messages": {
+        "create_success": "Role created successfully",
+        "create_error": "Failed to create role",
+        "update_success": "Role updated successfully",
+        "update_error": "Failed to update role"
+      }
+    }
+  },
+  "news": {
+    "form": {
+      "title_en": "Title (English)",
+      "title_ar": "Title (Arabic)",
+      "slug_en": "Slug (English)",
+      "slug_ar": "Slug (Arabic)",
+      "meta_description_en": "Meta Description (English)",
+      "meta_description_ar": "Meta Description (Arabic)",
+      "keywords_en": "Keywords (English)",
+      "keywords_ar": "Keywords (Arabic)",
+      "language_code": "Language Code",
+      "language_code_placeholder": "Select language",
+      "news_type": "News Type",
+      "news_type_placeholder": "Select news type",
+      "news_types": {
+        "general": "General",
+        "announcement": "Announcement",
+        "event": "Event"
+      },
+      "publication_date": "Publication Date",
+      "publication_status": "Publication Status",
+      "published": "Published",
+      "draft": "Draft",
+      "featured_status": "Featured Status",
+      "featured": "Featured",
+      "not_featured": "Not Featured",
+      "content_en": "Content (English)",
+      "content_ar": "Content (Arabic)",
+      "featured_image": "Featured Image",
+      "drag_drop_image": "Drag & drop an image or click to browse",
+      "buttons": {
+        "cancel": "Cancel",
+        "create": "Create News",
+        "update": "Update News"
+      },
+      "messages": {
+        "create_success": "News created successfully",
+        "create_error": "Failed to create news",
+        "update_success": "News updated successfully",
+        "update_error": "Failed to update news"
+      }
+    }
+  }
+} 

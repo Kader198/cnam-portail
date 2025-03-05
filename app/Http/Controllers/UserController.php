@@ -11,11 +11,36 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::with(['roles', 'auditLogs'])
-            ->latest()
-            ->paginate(10);
+        $query = User::with(['roles', 'auditLogs']);
+
+        // Search functionality
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by role
+        if ($request->filled('role') && $request->role !== 'all') {
+            $query->whereHas('roles', function($q) use ($request) {
+                $q->where('role_name', $request->role);
+            });
+        }
+
+        // Filter by status
+        if ($request->filled('status') && $request->status !== 'all') {
+            if ($request->status === 'verified') {
+                $query->whereNotNull('email_verified_at');
+            } else {
+                $query->whereNull('email_verified_at');
+            }
+        }
+
+        $users = $query->latest()->paginate(10);
 
         return Inertia::render('users/users-list', [
             'users' => $users
@@ -26,7 +51,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
         
-        return Inertia::render('users/user-create', [
+        return Inertia::render('users/users-create', [
             'roles' => $roles
         ]);
     }
@@ -37,9 +62,10 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', Password::defaults()],
-            'roles' => 'required|array',
-            'roles.*' => 'exists:roles,role_id'
+            'roles' => 'required',
         ]);
+
+        $role = explode(',', $validated['roles']);
 
         $user = User::create([
             'name' => $validated['name'],
@@ -47,7 +73,7 @@ class UserController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        $user->roles()->attach($validated['roles']);
+        $user->roles()->attach($role);
 
         return redirect()->route('users.index')
             ->with('message', 'User created successfully');
@@ -58,7 +84,7 @@ class UserController extends Controller
         $user->load('roles');
         $roles = Role::all();
         
-        return Inertia::render('users/user-edit', [
+        return Inertia::render('users/users-edit', [
             'user' => $user,
             'roles' => $roles
         ]);

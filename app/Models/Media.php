@@ -33,12 +33,18 @@ class Media extends Model
 
     public function uploader(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'uploaded_by');
+        return $this->belongsTo(User::class, 'uploaded_by', 'id');
     }
 
     public function contents(): BelongsToMany
     {
         return $this->belongsToMany(Content::class, 'content_media', 'media_id', 'content_id')
+            ->withTimestamps();
+    }
+
+    public function news(): BelongsToMany
+    {
+        return $this->belongsToMany(News::class, 'news_media', 'media_id', 'news_id')
             ->withTimestamps();
     }
 } 

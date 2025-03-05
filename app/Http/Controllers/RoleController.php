@@ -13,7 +13,7 @@ class RoleController extends Controller
         $query = Role::withCount('users');
 
         // Search by role name or description
-        if ($request->has('search')) {
+        if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('role_name', 'like', "%{$search}%")
@@ -24,7 +24,7 @@ class RoleController extends Controller
         }
 
         // Filter by permission level
-        if ($request->has('level') && $request->level !== 'all') {
+        if ($request->filled('level') && $request->level !== 'all') {
             $query->where('permission_level', $request->level);
         }
 
@@ -37,7 +37,7 @@ class RoleController extends Controller
 
     public function create()
     {
-        return Inertia::render('roles/role-create');
+        return Inertia::render('roles/roles-create');
     }
 
     public function store(Request $request)
@@ -58,7 +58,7 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        return Inertia::render('roles/role-edit', [
+        return Inertia::render('roles/roles-edit', [
             'role' => $role
         ]);
     }

@@ -15,6 +15,7 @@ import {
 import { Label } from '@/components/ui/label';
 import LexicalEditor from '@/components/editor/lexical-editor';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   content?: Content;
@@ -22,6 +23,7 @@ interface Props {
 }
 
 export default function ContentForm({ content, mode }: Props) {
+  const { t } = useTranslation();
   const { data, setData, post, put, processing, errors } = useForm({
     title: content?.title || '',
     title_ar: content?.title_ar || '',
@@ -41,19 +43,19 @@ export default function ContentForm({ content, mode }: Props) {
     if (mode === 'create') {
       post(route('content.store'), {
         onSuccess: () => {
-          toast.success('Content created successfully');
+          toast.success(t('content.form.messages.create_success'));
         },
         onError: () => {
-          toast.error('Failed to create content');
+          toast.error(t('content.form.messages.create_error'));
         },
       });
     } else {
       put(route('content.update', content?.content_id), {
         onSuccess: () => {
-          toast.success('Content updated successfully');
+          toast.success(t('content.form.messages.update_success'));
         },
         onError: () => {
-          toast.error('Failed to update content');
+          toast.error(t('content.form.messages.update_error'));
         },
       });
     }
@@ -64,7 +66,7 @@ export default function ContentForm({ content, mode }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* English Title */}
         <div className="space-y-2">
-          <Label htmlFor="title">Title (English)</Label>
+          <Label htmlFor="title">{t('content.form.title_en')}</Label>
           <Input
             id="title"
             value={data.title}
@@ -78,7 +80,7 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* Arabic Title */}
         <div className="space-y-2">
-          <Label htmlFor="title_ar">Title (Arabic)</Label>
+          <Label htmlFor="title_ar">{t('content.form.title_ar')}</Label>
           <Input
             id="title_ar"
             value={data.title_ar}
@@ -92,19 +94,19 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* Content Type */}
         <div className="space-y-2">
-          <Label htmlFor="content_type">Content Type</Label>
+          <Label htmlFor="content_type">{t('content.form.content_type')}</Label>
           <Select
             value={data.content_type}
             onValueChange={(value) => setData('content_type', value)}
           >
             <SelectTrigger>
-              <SelectValue placeholder="Select a type" />
+              <SelectValue placeholder={t('content.form.content_type_placeholder')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="article">Article</SelectItem>
-              <SelectItem value="news">News</SelectItem>
-              <SelectItem value="page">Page</SelectItem>
-              <SelectItem value="announcement">Announcement</SelectItem>
+              <SelectItem value="article">{t('content.form.content_types.article')}</SelectItem>
+              <SelectItem value="news">{t('content.form.content_types.news')}</SelectItem>
+              <SelectItem value="page">{t('content.form.content_types.page')}</SelectItem>
+              <SelectItem value="announcement">{t('content.form.content_types.announcement')}</SelectItem>
             </SelectContent>
           </Select>
           {errors.content_type && (
@@ -114,14 +116,14 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* Publication Status */}
         <div className="space-y-2">
-          <Label>Publication Status</Label>
+          <Label>{t('content.form.publication_status')}</Label>
           <div className="flex items-center space-x-2">
             <Checkbox
               id="is_published"
               checked={data.is_published}
               onCheckedChange={(checked) => setData('is_published', checked as boolean)}
             />
-            <Label htmlFor="is_published">Published</Label>
+            <Label htmlFor="is_published">{t('content.form.published')}</Label>
           </div>
           {errors.is_published && (
             <div className="text-sm text-red-600">{errors.is_published}</div>
@@ -130,7 +132,7 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* English Content */}
         <div className="md:col-span-2 space-y-2">
-          <Label htmlFor="content_body">Content (English) </Label>
+          <Label htmlFor="content_body">{t('content.form.content_en')}</Label>
           <LexicalEditor
             value={data.content_body}
             onChange={(value) => setData('content_body', value)}
@@ -142,7 +144,7 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* Arabic Content */}
         <div className="md:col-span-2 space-y-2">
-          <Label htmlFor="content_body_ar">Content (Arabic)</Label>
+          <Label htmlFor="content_body_ar">{t('content.form.content_ar')}</Label>
           <LexicalEditor
             value={data.content_body_ar}
             onChange={(value) => setData('content_body_ar', value)}
@@ -155,7 +157,7 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* Meta Description (English) */}
         <div className="space-y-2">
-          <Label htmlFor="meta_description">Meta Description (English)</Label>
+          <Label htmlFor="meta_description">{t('content.form.meta_description_en')}</Label>
           <Textarea
             id="meta_description"
             value={data.meta_description}
@@ -169,7 +171,7 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* Meta Description (Arabic) */}
         <div className="space-y-2">
-          <Label htmlFor="meta_description_ar">Meta Description (Arabic)</Label>
+          <Label htmlFor="meta_description_ar">{t('content.form.meta_description_ar')}</Label>
           <Textarea
             id="meta_description_ar"
             value={data.meta_description_ar}
@@ -183,12 +185,12 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* Keywords (English) */}
         <div className="space-y-2">
-          <Label htmlFor="keywords">Keywords (English)</Label>
+          <Label htmlFor="keywords">{t('content.form.keywords_en')}</Label>
           <Input
             id="keywords"
             value={data.keywords}
             onChange={(e) => setData('keywords', e.target.value)}
-            placeholder="Comma-separated keywords"
+            placeholder={t('content.form.keywords_placeholder')}
           />
           {errors.keywords && (
             <div className="text-sm text-red-600">{errors.keywords}</div>
@@ -197,12 +199,12 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* Keywords (Arabic) */}
         <div className="space-y-2">
-          <Label htmlFor="keywords_ar">Keywords (Arabic)</Label>
+          <Label htmlFor="keywords_ar">{t('content.form.keywords_ar')}</Label>
           <Input
             id="keywords_ar"
             value={data.keywords_ar}
             onChange={(e) => setData('keywords_ar', e.target.value)}
-            placeholder="Comma-separated keywords"
+            placeholder={t('content.form.keywords_placeholder')}
           />
           {errors.keywords_ar && (
             <div className="text-sm text-red-600">{errors.keywords_ar}</div>
@@ -211,7 +213,7 @@ export default function ContentForm({ content, mode }: Props) {
 
         {/* Featured Image */}
         <div className="md:col-span-2 space-y-2">
-          <Label htmlFor="featured_image">Featured Image URL</Label>
+          <Label htmlFor="featured_image">{t('content.form.featured_image')}</Label>
           <Input
             id="featured_image"
             value={data.featured_image}
@@ -229,10 +231,10 @@ export default function ContentForm({ content, mode }: Props) {
           variant="outline"
           onClick={() => window.history.back()}
         >
-          Cancel
+          {t('content.form.buttons.cancel')}
         </Button>
         <Button type="submit" disabled={processing}>
-          {mode === 'create' ? 'Create Content' : 'Update Content'}
+          {mode === 'create' ? t('content.form.buttons.create') : t('content.form.buttons.update')}
         </Button>
       </div>
     </form>

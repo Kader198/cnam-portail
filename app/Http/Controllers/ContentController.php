@@ -9,11 +9,32 @@ use Illuminate\Support\Str;
 
 class ContentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $contents = Content::with(['author', 'categories', 'media'])
-            ->latest()
-            ->paginate(10);
+        $query = Content::with(['author', 'categories', 'media']);
+
+        // Search functionality
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('title_ar', 'like', "%{$search}%")
+                  ->orWhere('content_body', 'like', "%{$search}%")
+                  ->orWhere('content_body_ar', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by type
+        if ($request->filled('type') && $request->type !== 'all') {
+            $query->where('content_type', $request->type);
+        }
+
+        // Filter by status
+        if ($request->filled('status') && $request->status !== 'all') {
+            $query->where('is_published', $request->status === 'published');
+        }
+
+        $contents = $query->latest()->paginate(10);
 
         return Inertia::render('content/content-list', [
             'contents' => $contents

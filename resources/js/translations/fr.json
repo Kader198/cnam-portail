@@ -1,0 +1,124 @@
+{
+  "content": {
+    "form": {
+      "title": "Formulaire de contenu",
+      "title_en": "Titre (Anglais)", 
+      "title_ar": "Titre (Arabe)",
+      "content_type": "Type de contenu",
+      "content_type_placeholder": "Choisir un type",
+      "content_types": {
+        "article": "Article",
+        "news": "Actualité",
+        "page": "Page",
+        "announcement": "Annonce"
+      },
+      "publication_status": "Statut de publication",
+      "published": "Publié",
+      "content_en": "Contenu (Anglais)",
+      "content_ar": "Contenu (Arabe)", 
+      "meta_description_en": "Description Meta (Anglais)",
+      "meta_description_ar": "Description Meta (Arabe)",
+      "keywords_en": "Mots-clés (Anglais)",
+      "keywords_ar": "Mots-clés (Arabe)",
+      "keywords_placeholder": "Mots-clés séparés par des virgules",
+      "featured_image": "Image à la une",
+      "buttons": {
+        "cancel": "Annuler",
+        "create": "Créer le contenu",
+        "update": "Mettre à jour le contenu"
+      },
+      "messages": {
+        "create_success": "Contenu créé avec succès",
+        "create_error": "Échec de la création du contenu",
+        "update_success": "Contenu mis à jour avec succès",
+        "update_error": "Échec de la mise à jour du contenu"
+      }
+    }
+  },
+  "users": {
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "password_confirmation": "Confirmation du mot de passe",
+      "roles": "Rôle",
+      "roles_placeholder": "Sélectionner un rôle",
+      "buttons": {
+        "cancel": "Annuler",
+        "create": "Créer l'utilisateur",
+        "update": "Mettre à jour l'utilisateur"
+      },
+      "messages": {
+        "create_success": "Utilisateur créé avec succès",
+        "create_error": "Échec de la création de l'utilisateur",
+        "update_success": "Utilisateur mis à jour avec succès",
+        "update_error": "Échec de la mise à jour de l'utilisateur"
+      }
+    }
+  },
+  "roles": {
+    "form": {
+      "role_name": "Nom du rôle (Anglais)",
+      "role_name_ar": "Nom du rôle (Arabe)",
+      "description": "Description (Anglais)",
+      "description_ar": "Description (Arabe)",
+      "permission_level": "Niveau de permission",
+      "permission_level_placeholder": "Sélectionner un niveau de permission",
+      "permission_level_option": "Niveau {{level}}",
+      "buttons": {
+        "cancel": "Annuler",
+        "create": "Créer le rôle",
+        "update": "Mettre à jour le rôle"
+      },
+      "messages": {
+        "create_success": "Rôle créé avec succès",
+        "create_error": "Échec de la création du rôle",
+        "update_success": "Rôle mis à jour avec succès",
+        "update_error": "Échec de la mise à jour du rôle"
+      }
+    }
+  },
+  "news": {
+    "form": {
+      "title_en": "Titre (Anglais)",
+      "title_ar": "Titre (Arabe)",
+      "slug_en": "Slug (Anglais)",
+      "slug_ar": "Slug (Arabe)",
+      "meta_description_en": "Description Meta (Anglais)",
+      "meta_description_ar": "Description Meta (Arabe)",
+      "keywords_en": "Mots-clés (Anglais)",
+      "keywords_ar": "Mots-clés (Arabe)",
+      "language_code": "Code de langue",
+      "language_code_placeholder": "Sélectionner la langue",
+      "news_type": "Type d'actualité",
+      "news_type_placeholder": "Sélectionner le type d'actualité",
+      "news_types": {
+        "general": "Général",
+        "announcement": "Annonce",
+        "event": "Événement"
+      },
+      "publication_date": "Date de publication",
+      "publication_status": "Statut de publication",
+      "published": "Publié",
+      "draft": "Brouillon",
+      "featured_status": "Statut en vedette",
+      "featured": "En vedette",
+      "not_featured": "Non en vedette",
+      "content_en": "Contenu (Anglais)",
+      "content_ar": "Contenu (Arabe)",
+      "featured_image": "Image en vedette",
+      "drag_drop_image": "Glissez & déposez une image ou cliquez pour parcourir",
+      "buttons": {
+        "cancel": "Annuler",
+        "create": "Créer l'actualité",
+        "update": "Mettre à jour l'actualité"
+      },
+      "messages": {
+        "create_success": "Actualité créée avec succès",
+        "create_error": "Échec de la création de l'actualité",
+        "update_success": "Actualité mise à jour avec succès",
+        "update_error": "Échec de la mise à jour de l'actualité"
+      }
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "content": {
+    "form": {
+      "title": "نموذج المحتوى",
+      "title_en": "العنوان (الإنجليزية)",
+      "title_ar": "العنوان (العربية)",
+      "content_type": "نوع المحتوى",
+      "content_type_placeholder": "اختر نوعاً",
+      "content_types": {
+        "article": "مقال",
+        "news": "خبر",
+        "page": "صفحة",
+        "announcement": "إعلان"
+      },
+      "publication_status": "حالة النشر",
+      "published": "منشور",
+      "content_en": "المحتوى (الإنجليزية)",
+      "content_ar": "المحتوى (العربية)",
+      "meta_description_en": "وصف الميتا (الإنجليزية)",
+      "meta_description_ar": "وصف الميتا (العربية)",
+      "keywords_en": "الكلمات المفتاحية (الإنجليزية)",
+      "keywords_ar": "الكلمات المفتاحية (العربية)",
+      "keywords_placeholder": "كلمات مفتاحية مفصولة بفواصل",
+      "featured_image": "رابط الصورة المميزة",
+      "buttons": {
+        "cancel": "إلغاء",
+        "create": "إنشاء محتوى",
+        "update": "تحديث المحتوى"
+      },
+      "messages": {
+        "create_success": "تم إنشاء المحتوى بنجاح",
+        "create_error": "فشل في إنشاء المحتوى",
+        "update_success": "تم تحديث المحتوى بنجاح",
+        "update_error": "فشل في تحديث المحتوى"
+      }
+    }
+  },
+  "users": {
+    "form": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "password_confirmation": "تأكيد كلمة المرور",
+      "roles": "الدور",
+      "roles_placeholder": "اختر دوراً",
+      "buttons": {
+        "cancel": "إلغاء",
+        "create": "إنشاء مستخدم",
+        "update": "تحديث المستخدم"
+      },
+      "messages": {
+        "create_success": "تم إنشاء المستخدم بنجاح",
+        "create_error": "فشل في إنشاء المستخدم",
+        "update_success": "تم تحديث المستخدم بنجاح",
+        "update_error": "فشل في تحديث المستخدم"
+      }
+    }
+  },
+  "roles": {
+    "form": {
+      "role_name": "اسم الدور (الإنجليزية)",
+      "role_name_ar": "اسم الدور (العربية)",
+      "description": "الوصف (الإنجليزية)",
+      "description_ar": "الوصف (العربية)",
+      "permission_level": "مستوى الصلاحيات",
+      "permission_level_placeholder": "اختر مستوى الصلاحيات",
+      "permission_level_option": "المستوى {{level}}",
+      "buttons": {
+        "cancel": "إلغاء",
+        "create": "إنشاء دور",
+        "update": "تحديث الدور"
+      },
+      "messages": {
+        "create_success": "تم إنشاء الدور بنجاح",
+        "create_error": "فشل في إنشاء الدور",
+        "update_success": "تم تحديث الدور بنجاح",
+        "update_error": "فشل في تحديث الدور"
+      }
+    }
+  },
+  "news": {
+    "form": {
+      "title_en": "العنوان (الإنجليزية)",
+      "title_ar": "العنوان (العربية)",
+      "slug_en": "الرابط المختصر (الإنجليزية)",
+      "slug_ar": "الرابط المختصر (العربية)",
+      "meta_description_en": "وصف الميتا (الإنجليزية)",
+      "meta_description_ar": "وصف الميتا (العربية)",
+      "keywords_en": "الكلمات المفتاحية (الإنجليزية)",
+      "keywords_ar": "الكلمات المفتاحية (العربية)",
+      "language_code": "رمز اللغة",
+      "language_code_placeholder": "اختر اللغة",
+      "news_type": "نوع الخبر",
+      "news_type_placeholder": "اختر نوع الخبر",
+      "news_types": {
+        "general": "عام",
+        "announcement": "إعلان",
+        "event": "حدث"
+      },
+      "publication_date": "تاريخ النشر",
+      "publication_status": "حالة النشر",
+      "published": "منشور",
+      "draft": "مسودة",
+      "featured_status": "حالة التمييز",
+      "featured": "مميز",
+      "not_featured": "غير مميز",
+      "content_en": "المحتوى (الإنجليزية)",
+      "content_ar": "المحتوى (العربية)",
+      "featured_image": "الصورة المميزة",
+      "drag_drop_image": "اسحب وأفلت صورة أو انقر للتصفح",
+      "buttons": {
+        "cancel": "إلغاء",
+        "create": "إنشاء خبر",
+        "update": "تحديث الخبر"
+      },
+      "messages": {
+        "create_success": "تم إنشاء الخبر بنجاح",
+        "create_error": "فشل في إنشاء الخبر",
+        "update_success": "تم تحديث الخبر بنجاح",
+        "update_error": "فشل في تحديث الخبر"
+      }
+    }
+  }
+} 
