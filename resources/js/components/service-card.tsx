@@ -14,23 +14,27 @@ export function ServiceCard({ icon, title, description, features }: ServiceCardP
   return (
     <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg border-none shadow-md hover:translate-y-[-2px] w-full">
       <CardHeader className="pb-4">
-        <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 shadow-sm">
-          {icon}
+        <div className="flex flex-col h-full">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+              {icon}
+            </div>
+            <h3 className="text-xs xs:text-sm sm:text-base font-semibold">{title}</h3>
+          </div>
+          <p className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground mb-3 flex-grow">{description}</p>
+          <ul className="space-y-1.5">
+            {features.map((feature, index) => (
+              <li key={index} className="flex items-center gap-1.5 text-[10px] xs:text-xs">
+                <div className="flex h-4 w-4 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                  <Check className="h-2.5 w-2.5 text-[#c4008b]" />
+                </div>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <CardTitle className="text-xl">{title}</CardTitle>
-        <p className="text-sm text-muted-foreground">{description}</p>
       </CardHeader>
       <CardContent className="pb-4">
-        <ul className="space-y-2">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-start gap-2">
-              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 flex-shrink-0 mt-0.5">
-                <Check className="h-3 w-3 text-primary" />
-              </div>
-              <span className="text-sm">{feature}</span>
-            </li>
-          ))}
-        </ul>
       </CardContent>
       <CardFooter className="pt-0">
         <Button variant="outline" className="w-full">

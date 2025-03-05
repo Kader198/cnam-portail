@@ -136,7 +136,7 @@ export function MainNav() {
       </Sheet>
 
       {/* Main Navigation */}
-      <div className="border-b z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="border-b z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 hidden sm:block">
         <div className="container mx-auto max-w-7xl flex h-10 md:h-12 items-center">
           <Sheet>
             <SheetTrigger asChild>
@@ -237,7 +237,7 @@ export function MainNav() {
                   href={item.href}
                   className={cn(
                     "flex items-center whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium",
-                    window.location.pathname === item.href ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80",
+                    window.location.pathname === item.href ? "bg-[#c4008b] text-[#c4008b]-foreground" : "bg-muted hover:bg-muted/80",
                   )}
                 >
                   {React.cloneElement(item.icon, { className: "h-3 w-3 mr-1" })}

@@ -43,10 +43,10 @@ export default function Home() {
       <section className="py-4 sm:py-6 md:py-10 bg-muted/30">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            <StatCard icon={<Users className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />} value="500K+" label="Assurés" />
-            <StatCard icon={<Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />} value="1200+" label="Prestataires" />
-            <StatCard icon={<Shield className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />} value="95%" label="Taux de couverture" />
-            <StatCard icon={<Clock className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />} value="48h" label="Délai de traitement" />
+            <StatCard icon={<Users className="h-5 w-5 sm:h-6 sm:w-6 text-[#c4008b]" />} value="500K+" label="Assurés" />
+            <StatCard icon={<Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-[#c4008b]" />} value="1200+" label="Prestataires" />
+            <StatCard icon={<Shield className="h-5 w-5 sm:h-6 sm:w-6 text-[#c4008b]" />} value="95%" label="Taux de couverture" />
+            <StatCard icon={<Clock className="h-5 w-5 sm:h-6 sm:w-6 text-[#c4008b]" />} value="48h" label="Délai de traitement" />
           </div>
         </div>
       </section>
@@ -57,15 +57,15 @@ export default function Home() {
           <div className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-3">
             {/* Welcome Section */}
             <Card className="md:col-span-1 overflow-hidden border-none shadow-md">
-              <CardHeader className="pb-3 bg-primary/5 border-b">
-                <CardTitle className="text-xl font-bold text-primary flex items-center">
+              <CardHeader className="pb-3 bg-[#c4008b]/5 border-b">
+                <CardTitle className="text-xl font-bold text-[#c4008b] flex items-center">
                   <Info className="mr-2 h-5 w-5" />
                   Mot de Bienvenue
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
                 <div className="mb-4 flex justify-center">
-                  <div className="relative h-24 w-24 rounded-full overflow-hidden border-4 border-primary/20">
+                  <div className="relative h-24 w-24 rounded-full overflow-hidden border-4 border-[#c4008b]/20">
                     <img src="https://i.imgur.com/Hl4U5Jh.png" alt="CNAM Icon" className="w-full h-full object-cover" />
                   </div>
                 </div>
@@ -84,8 +84,8 @@ export default function Home() {
 
             {/* Contact Section */}
             <Card className="md:col-span-1 overflow-hidden border-none shadow-md">
-              <CardHeader className="pb-3 bg-primary/5 border-b">
-                <CardTitle className="text-xl font-bold text-primary flex items-center">
+              <CardHeader className="pb-3 bg-[#c4008b]/5 border-b">
+                <CardTitle className="text-xl font-bold text-[#c4008b] flex items-center">
                   <Phone className="mr-2 h-5 w-5" />
                   Contact
                 </CardTitle>
@@ -93,8 +93,8 @@ export default function Home() {
               <CardContent className="pt-6">
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                      <MessageSquare className="h-4 w-4 text-primary" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <MessageSquare className="h-4 w-4 text-[#c4008b]" />
                     </div>
                     <div>
                       <h4 className="font-medium">Des suggestions, des réclamations</h4>
@@ -102,8 +102,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                      <Mail className="h-4 w-4 text-primary" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <Mail className="h-4 w-4 text-[#c4008b]" />
                     </div>
                     <div>
                       <h4 className="font-medium">Email</h4>
@@ -111,8 +111,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                      <MapPin className="h-4 w-4 text-primary" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <MapPin className="h-4 w-4 text-[#c4008b]" />
                     </div>
                     <div>
                       <h4 className="font-medium">Adresse</h4>
@@ -131,8 +131,8 @@ export default function Home() {
 
             {/* Practical Info Section */}
             <Card className="md:col-span-1 overflow-hidden border-none shadow-md">
-              <CardHeader className="pb-3 bg-primary/5 border-b">
-                <CardTitle className="text-xl font-bold text-primary flex items-center">
+              <CardHeader className="pb-3 bg-[#c4008b]/5 border-b">
+                <CardTitle className="text-xl font-bold text-[#c4008b] flex items-center">
                   <HelpCircle className="mr-2 h-5 w-5" />
                   Infos pratiques
                 </CardTitle>
@@ -144,20 +144,20 @@ export default function Home() {
                 </p>
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-colors">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                      <FileText className="h-4 w-4 text-primary" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <FileText className="h-4 w-4 text-[#c4008b]" />
                     </div>
                     <span className="text-sm">Guide des procédures</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-colors">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                      <Users className="h-4 w-4 text-primary" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <Users className="h-4 w-4 text-[#c4008b]" />
                     </div>
                     <span className="text-sm">Liste des prestataires agréés</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-colors">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                      <Download className="h-4 w-4 text-primary" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <Download className="h-4 w-4 text-[#c4008b]" />
                     </div>
                     <span className="text-sm">Formulaires à télécharger</span>
                   </div>
@@ -179,17 +179,17 @@ export default function Home() {
           {/* Services Section */}
           <section className="mt-8 sm:mt-12 md:mt-16">
             <div className="flex items-center justify-between mb-4 sm:mb-6 md:mb-8">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary flex items-center">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#c4008b] flex items-center">
                 <Shield className="mr-2 h-5 w-5 sm:h-6 sm:w-6 hidden sm:inline" />
                 Nos Services
               </h2>
-              <Link href="#" className="text-xs sm:text-sm text-primary hover:underline flex items-center">
+              <Link href="#" className="text-xs sm:text-sm text-[#c4008b] hover:underline flex items-center">
                 Tous les services <ChevronRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
             </div>
             <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               <ServiceCard
-                icon={<User className="h-6 w-6 text-primary" />}
+                icon={<User className="h-6 w-6 text-[#c4008b]" />}
                 title="Pour les Assurés"
                 description="Accédez à vos droits et suivez vos remboursements en ligne"
                 features={[
@@ -199,13 +199,13 @@ export default function Home() {
                 ]}
               />
               <ServiceCard
-                icon={<Building2 className="h-6 w-6 text-primary" />}
+                icon={<Building2 className="h-6 w-6 text-[#c4008b]" />}
                 title="Pour les Prestataires"
                 description="Consultez les procédures et soumettez vos factures"
                 features={["Facturation en ligne", "Suivi des paiements", "Mise à jour du profil"]}
               />
               <ServiceCard
-                icon={<Users className="h-6 w-6 text-primary" />}
+                icon={<Users className="h-6 w-6 text-[#c4008b]" />}
                 title="Pour les Employeurs"
                 description="Gérez les affiliations et les cotisations de vos employés"
                 features={["Déclaration des employés", "Paiement des cotisations", "Suivi des dossiers"]}
@@ -218,11 +218,11 @@ export default function Home() {
             {/* News Section */}
             <div>
               <div className="mb-6 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-primary flex items-center">
+                <h2 className="text-2xl font-bold text-[#c4008b] flex items-center">
                   <Calendar className="mr-2 h-5 w-5 hidden sm:inline" />
                   Actualités
                 </h2>
-                <Link href="#" className="text-sm text-primary hover:underline flex items-center">
+                <Link href="#" className="text-sm text-[#c4008b] hover:underline flex items-center">
                   Voir toutes <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
               </div>
@@ -248,11 +248,11 @@ export default function Home() {
             {/* Testimonials Section */}
             <div>
               <div className="mb-6 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-primary flex items-center">
+                <h2 className="text-2xl font-bold text-[#c4008b] flex items-center">
                   <MessageSquare className="mr-2 h-5 w-5 hidden sm:inline" />
                   Témoignages
                 </h2>
-                <Link href="#" className="text-sm text-primary hover:underline flex items-center">
+                <Link href="#" className="text-sm text-[#c4008b] hover:underline flex items-center">
                   Voir tous <ChevronRight className="ml-1 h-4 w-4" />
                 </Link>
               </div>
@@ -278,7 +278,7 @@ export default function Home() {
 
           {/* Call to Action */}
           <section className="mt-8 sm:mt-12 md:mt-16">
-            <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-primary to-primary/70 p-4 sm:p-6 md:p-8 lg:p-10">
+            <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-[#c4008b] to-[#c4008b]/70 p-4 sm:p-6 md:p-8 lg:p-10">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl"></div>
 
@@ -313,11 +313,11 @@ export default function Home() {
         <section className="mt-8 sm:mt-12 md:mt-16">
           <div className="container mx-auto max-w-7xl px-2 sm:px-4 md:px-6">
             <div className="flex items-center justify-between mb-4 sm:mb-6 md:mb-8">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary flex items-center">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#c4008b] flex items-center">
                 <FileText className="mr-2 h-5 w-5 sm:h-6 sm:w-6 hidden sm:inline" />
                 Galerie Photos
               </h2>
-              <Link href="#" className="text-xs sm:text-sm text-primary hover:underline flex items-center">
+              <Link href="#" className="text-xs sm:text-sm text-[#c4008b] hover:underline flex items-center">
                 Voir toutes <ChevronRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
               </Link>
             </div>

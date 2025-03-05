@@ -16,16 +16,16 @@ import { MapPin } from 'lucide-react'
 import { Bell } from 'lucide-react'
 export default function WelcomeLayout({ children }: PropsWithChildren) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col ">
       {/* Top Bar */}
-      <div className="border-b bg-primary/5">
+      <div className="border-b bg-[#c4008b]/5">
         <div className="container mx-auto max-w-7xl flex items-center justify-between py-1.5 sm:py-2">
           <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
             <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             <span>+222 45 29 19 33</span>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
-            <Link href="#" className="flex items-center gap-1 text-xs sm:text-sm text-primary hover:underline">
+            <Link href="#" className="flex items-center gap-1 text-xs sm:text-sm text-[#c4008b] hover:underline">
               <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               <span className="hidden sm:inline">Messagerie</span>
             </Link>
@@ -49,7 +49,7 @@ export default function WelcomeLayout({ children }: PropsWithChildren) {
             </Button>
             <Link href="/" className="flex items-center gap-1.5 sm:gap-2">
               <img
-                src="https://i.imgur.com/Hl4U5Jh.png"
+                src="/images/logo.png"
                 alt="CNAM Logo"
                 className="h-[28px] xs:h-[32px] sm:h-[40px] md:h-[50px] lg:h-[60px] w-auto"
               />
@@ -86,7 +86,7 @@ export default function WelcomeLayout({ children }: PropsWithChildren) {
       <MainNav />
 
       {/* Alert Banner */}
-      <div className="bg-primary text-primary-foreground">
+      <div className="bg-[#c4008b] text-white">
         <div className="container mx-auto max-w-7xl py-1.5 sm:py-2 md:py-3">
           <div className="flex items-center gap-2">
             <Bell className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
@@ -102,7 +102,7 @@ export default function WelcomeLayout({ children }: PropsWithChildren) {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1">
+      <main className="flex-1 px-2 sm:px-4 md:px-6">
         {children}
       </main>
 
@@ -112,30 +112,30 @@ export default function WelcomeLayout({ children }: PropsWithChildren) {
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div>
               <h3 className="mb-4 text-lg font-semibold flex items-center">
-                <Info className="mr-2 h-5 w-5 text-primary" />À propos de CNAM
+                <Info className="mr-2 h-5 w-5 text-[#c4008b]" />À propos de CNAM
               </h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Qui sommes-nous
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Notre mission
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Organigramme
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Historique
                   </Link>
                 </li>
@@ -143,31 +143,31 @@ export default function WelcomeLayout({ children }: PropsWithChildren) {
             </div>
             <div>
               <h3 className="mb-4 text-lg font-semibold flex items-center">
-                <Shield className="mr-2 h-5 w-5 text-primary" />
+                <Shield className="mr-2 h-5 w-5 text-[#c4008b]" />
                 Services
               </h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Assurés
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Prestataires
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Employeurs
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Documentation
                   </Link>
                 </li>
@@ -175,31 +175,31 @@ export default function WelcomeLayout({ children }: PropsWithChildren) {
             </div>
             <div>
               <h3 className="mb-4 text-lg font-semibold flex items-center">
-                <FileText className="mr-2 h-5 w-5 text-primary" />
+                <FileText className="mr-2 h-5 w-5 text-[#c4008b]" />
                 Ressources
               </h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Actualités
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Avis et Annonces
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Appels d&apos;offres
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="text-muted-foreground hover:text-foreground flex items-center">
-                    <ChevronRight className="mr-1 h-3 w-3 text-primary" />
+                    <ChevronRight className="mr-1 h-3 w-3 text-[#c4008b]" />
                     Recrutement
                   </Link>
                 </li>
@@ -207,25 +207,25 @@ export default function WelcomeLayout({ children }: PropsWithChildren) {
             </div>
             <div>
               <h3 className="mb-4 text-lg font-semibold flex items-center">
-                <Phone className="mr-2 h-5 w-5 text-primary" />
+                <Phone className="mr-2 h-5 w-5 text-[#c4008b]" />
                 Contact
               </h3>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 flex-shrink-0 mt-0.5">
-                    <Phone className="h-3 w-3 text-primary" />
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0 mt-0.5">
+                    <Phone className="h-3 w-3 text-[#c4008b]" />
                   </div>
                   <span className="text-muted-foreground">+222 45 29 19 33</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 flex-shrink-0 mt-0.5">
-                    <Mail className="h-3 w-3 text-primary" />
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0 mt-0.5">
+                    <Mail className="h-3 w-3 text-[#c4008b]" />
                   </div>
                   <span className="text-muted-foreground">contact@cnam.mr</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 flex-shrink-0 mt-0.5">
-                    <MapPin className="h-3 w-3 text-primary" />
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0 mt-0.5">
+                    <MapPin className="h-3 w-3 text-[#c4008b]" />
                   </div>
                   <span className="text-muted-foreground">Nouakchott, Mauritanie</span>
                 </li>

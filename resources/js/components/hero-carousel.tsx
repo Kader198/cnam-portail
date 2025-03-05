@@ -63,9 +63,9 @@ export function HeroCarousel() {
                     alt={slide.title}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/30 p-2.5 xs:p-3 sm:p-4 md:p-6 lg:p-10 flex flex-col justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#c4008b]/50 to-[#c4008b]/10 p-2.5 xs:p-3 sm:p-4 md:p-6 lg:p-10 flex flex-col justify-center">
                     <div className="max-w-md xl:ml-8">
-                      <Badge className="mb-1.5 xs:mb-2 md:mb-3 bg-white/20 text-white hover:bg-white/30 text-[10px] xs:text-xs ">
+                      <Badge className="mb-1.5 xs:mb-2 md:mb-3 bg-white/20 text-white hover:bg-white/30 text-[10px] xs:text-xs hidden sm:inline-flex">
                         {slide.badge}
                       </Badge>
                       <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1 xs:mb-2 md:mb-4 leading-tight">
@@ -81,12 +81,13 @@ export function HeroCarousel() {
                           className="h-6 xs:h-7 sm:h-8 md:h-9 text-[10px] xs:text-xs sm:text-sm"
                         >
                           {slide.primaryButton.icon}
-                          {slide.primaryButton.text}
+                          <span className="hidden xs:inline">{slide.primaryButton.text}</span>
+                          <span className="xs:hidden">S'inscrire</span>
                         </Button>
                         <Button
                           variant="outline"
                           size="sm"
-                          className="h-6 xs:h-7 sm:h-8 md:h-9 bg-transparent text-white border-white hover:bg-white/20 hover:text-white text-[10px] xs:text-xs sm:text-sm"
+                          className="h-6 xs:h-7 sm:h-8 md:h-9 bg-transparent text-white border-white hover:bg-white/20 hover:text-white text-[10px] xs:text-xs sm:text-sm hidden sm:flex"
                         >
                           {slide.secondaryButton.icon}
                           {slide.secondaryButton.text}
@@ -108,8 +109,8 @@ export function HeroCarousel() {
               />
             ))}
           </div>
-          <CarouselPrevious className="left-1 sm:left-2 md:left-4 h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 -translate-y-1/2" />
-          <CarouselNext className="right-1 sm:right-2 md:right-4 h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 -translate-y-1/2" />
+          <CarouselPrevious className="left-1 sm:left-2 md:left-4 h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 -translate-y-1/2 hidden sm:flex" />
+          <CarouselNext className="right-1 sm:right-2 md:right-4 h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 -translate-y-1/2 hidden sm:flex" />
         </Carousel>
       </div>
     </section>

@@ -125,10 +125,7 @@ export default function MediaList({ media }: Props) {
                   <Eye className="w-6 h-6 text-white" />
                 </button>
               </div>
-              <div>
-                <div className="font-medium">{media.file_name}</div>
-                <div className="text-sm text-gray-500">{formatFileSize(media.file_size)}</div>
-              </div>
+            
             </div>
           ) : (
             <div className="flex items-center space-x-3">
