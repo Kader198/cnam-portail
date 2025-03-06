@@ -75,11 +75,13 @@ class WelcomeController extends Controller
             ->get();
 
         $mainMenus = Menu::where('location', 'header')
+            ->where('is_active', true)
             ->orderBy('created_at', 'desc')
             ->with('items', 'items.children')
             ->get();
 
         $footerMenus = Menu::where('location', 'footer')
+            ->where('is_active', true)
             ->orderBy('created_at', 'desc')
             ->with('items', 'items.children')
             ->get();

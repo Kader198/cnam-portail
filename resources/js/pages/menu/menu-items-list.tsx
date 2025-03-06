@@ -171,16 +171,7 @@ export default function MenuItemsList({ menuItems, selectedMenuId }: Props) {
 
       <div className="py-3">
         <div className="mx-auto sm:px-6 lg:px-4">
-          <div className="flex justify-between items-center mb-4">
-            <div className="flex items-center space-x-4">
-              {selectedMenuId && menuItems.data[0]?.menu && (
-                <h2 className="text-lg font-semibold">
-                  Menu: {menuItems.data[0].menu.menu_name}
-                </h2>
-              )}
-            </div>
-          </div>
-
+        
           <DataTable
             title="Menu Items"
             data={menuItems}

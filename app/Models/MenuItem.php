@@ -35,6 +35,6 @@ class MenuItem extends Model
 
     public function children(): HasMany
     {
-        return $this->hasMany(MenuItem::class, 'parent_id', 'menu_item_id');
+        return $this->hasMany(MenuItem::class, 'parent_id', 'menu_item_id')->where('is_active', true)->orderBy('display_order');
     }
 }

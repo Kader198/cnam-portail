@@ -21,6 +21,7 @@ class MenuItemController extends Controller
 
         $menuItems = $query->paginate(10);
 
+
         return Inertia::render('menu/menu-items-list', [
             'menuItems' => $menuItems,
             'selectedMenuId' => $request->menu_id,
@@ -99,4 +100,4 @@ class MenuItemController extends Controller
         return redirect()->route('menu-items.index')
             ->with('success', 'Menu item deleted successfully.');
     }
-} 
+}
