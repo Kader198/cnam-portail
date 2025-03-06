@@ -6,7 +6,7 @@ import { LanguageSwitcher } from '@/components/language-switcher'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
-import { Menu } from 'lucide-react'
+import { Menu as MenuIcon } from 'lucide-react'
 import { FileCheck } from 'lucide-react'
 import { Info } from 'lucide-react'
 import { Shield } from 'lucide-react'
@@ -14,7 +14,13 @@ import { ChevronRight } from 'lucide-react'
 import { Mail } from 'lucide-react'
 import { MapPin } from 'lucide-react' 
 import { Bell } from 'lucide-react'
-export default function WelcomeLayout({ children }: PropsWithChildren) {
+import type { Menu } from '@/types'
+interface Props {
+  main_menu:  Menu[];
+  footer_menu: Menu[];
+}
+
+export default function WelcomeLayout({ children, main_menu, footer_menu }: PropsWithChildren<Props>) {
   return (
     <div className="flex min-h-screen flex-col ">
       {/* Top Bar */}
@@ -44,7 +50,7 @@ export default function WelcomeLayout({ children }: PropsWithChildren) {
               className="mr-1 md:hidden"
               onClick={() => document.getElementById("mobile-menu-trigger")?.click()}
             >
-              <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
+              <MenuIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               <span className="sr-only">Toggle menu</span>
             </Button>
             <Link href="/" className="flex items-center gap-1.5 sm:gap-2">
@@ -83,7 +89,7 @@ export default function WelcomeLayout({ children }: PropsWithChildren) {
       </header>
 
       {/* Navigation */}
-      <MainNav />
+      <MainNav main_menu={main_menu} />
 
       {/* Alert Banner */}
       <div className="bg-[#c4008b] text-white">

@@ -1,47 +1,65 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import {
-  Bell,
-  ChevronRight,
-  FileText,
-  Mail,
-  MessageSquare,
-  Phone,
-  Search,
-  Users,
-  Building2,
-  FileCheck,
-  Calendar,
-  Clock,
-  Download,
-  HelpCircle,
-  Info,
-  MapPin,
-  Shield,
-  User,
-  Menu,
-  Link,
-} from "lucide-react"
-import { LanguageSwitcher } from "@/components/language-switcher"
-import { MainNav } from "@/components/main-nav"
+import { HeroCarousel } from "@/components/hero-carousel"
 import { NewsCard } from "@/components/news-card"
-import { TestimonialCard } from "@/components/testimonial-card"
 import { ServiceCard } from "@/components/service-card"
 import { StatCard } from "@/components/stat-card"
-import { HeroCarousel } from "@/components/hero-carousel"
+import { TestimonialCard } from "@/components/testimonial-card"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import WelcomeLayout from "@/layouts/welcome/welcome-layout"
-
-export default function Home() {
+import {
+  Building2,
+  Calendar,
+  ChevronRight,
+  Clock,
+  Download,
+  FileText,
+  HelpCircle,
+  Info,
+  Link,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+  Shield,
+  User,
+  Users
+} from "lucide-react"
+import { Menu } from "@/types";
+interface Props {
+  welcome_message: any;
+  latest_news: any[];
+  testimonials: any[];
+  contact_info: any[];
+  practical_info: any[];
+  service_providers: any[];
+  departments: any[];
+  faqs: any[];
+  glossary_terms: any[];
+  menus: any[];
+  main_menu: Menu[];
+  footer_menu: Menu[];
+}
+export default function Home({
+  welcome_message,
+  latest_news,
+  testimonials,
+  contact_info,
+  practical_info,
+  service_providers,
+  departments,
+  faqs,
+  glossary_terms,
+  menus,
+  main_menu,
+  footer_menu
+}: Props) {
   return (
-    <WelcomeLayout>
+    <WelcomeLayout main_menu={main_menu} footer_menu={footer_menu}>
       <HeroCarousel />
 
       {/* Stats Section */}
       <section className="py-4 sm:py-6 md:py-10 bg-muted/30">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             <StatCard icon={<Users className="h-5 w-5 sm:h-6 sm:w-6 text-[#c4008b]" />} value="500K+" label="Assurés" />
             <StatCard icon={<Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-[#c4008b]" />} value="1200+" label="Prestataires" />
@@ -53,19 +71,19 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="py-6 sm:py-8 md:py-12">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-3">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {/* Welcome Section */}
-            <Card className="md:col-span-1 overflow-hidden border-none shadow-md">
+            <Card className="overflow-hidden border-none shadow-md">
               <CardHeader className="pb-3 bg-[#c4008b]/5 border-b">
-                <CardTitle className="text-xl font-bold text-[#c4008b] flex items-center">
+                <CardTitle className="text-lg sm:text-xl font-bold text-[#c4008b] flex items-center">
                   <Info className="mr-2 h-5 w-5" />
                   Mot de Bienvenue
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
                 <div className="mb-4 flex justify-center">
-                  <div className="relative h-24 w-24 rounded-full overflow-hidden border-4 border-[#c4008b]/20">
+                  <div className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden border-4 border-[#c4008b]/20">
                     <img src="https://i.imgur.com/Hl4U5Jh.png" alt="CNAM Icon" className="w-full h-full object-cover" />
                   </div>
                 </div>
@@ -83,46 +101,46 @@ export default function Home() {
             </Card>
 
             {/* Contact Section */}
-            <Card className="md:col-span-1 overflow-hidden border-none shadow-md">
+            <Card className="overflow-hidden border-none shadow-md">
               <CardHeader className="pb-3 bg-[#c4008b]/5 border-b">
-                <CardTitle className="text-xl font-bold text-[#c4008b] flex items-center">
+                <CardTitle className="text-lg sm:text-xl font-bold text-[#c4008b] flex items-center">
                   <Phone className="mr-2 h-5 w-5" />
                   Contact
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
-                      <MessageSquare className="h-4 w-4 text-[#c4008b]" />
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#c4008b]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">Des suggestions, des réclamations</h4>
-                      <p className="text-sm text-muted-foreground">votre avis nous intéresse...</p>
+                      <h4 className="text-sm sm:text-base font-medium">Des suggestions, des réclamations</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground">votre avis nous intéresse...</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
-                      <Mail className="h-4 w-4 text-[#c4008b]" />
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#c4008b]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">Email</h4>
-                      <p className="text-sm text-muted-foreground">contact@cnam.mr</p>
+                      <h4 className="text-sm sm:text-base font-medium">Email</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground">contact@cnam.mr</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
-                      <MapPin className="h-4 w-4 text-[#c4008b]" />
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#c4008b]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">Adresse</h4>
-                      <p className="text-sm text-muted-foreground">Nouakchott, Mauritanie</p>
+                      <h4 className="text-sm sm:text-base font-medium">Adresse</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground">Nouakchott, Mauritanie</p>
                     </div>
                   </div>
                 </div>
               </CardContent>
               <CardFooter className="pt-0">
-                <Button className="w-full bg-[#c4008b] hover:bg-[#a30073]">
+                <Button className="w-full bg-[#c4008b] hover:bg-[#a30073] text-sm sm:text-base">
                   <Mail className="mr-1.5 h-4 w-4" />
                   Contactez nous
                 </Button>
@@ -130,47 +148,47 @@ export default function Home() {
             </Card>
 
             {/* Practical Info Section */}
-            <Card className="md:col-span-1 overflow-hidden border-none shadow-md">
+            <Card className="overflow-hidden border-none shadow-md">
               <CardHeader className="pb-3 bg-[#c4008b]/5 border-b">
-                <CardTitle className="text-xl font-bold text-[#c4008b] flex items-center">
+                <CardTitle className="text-lg sm:text-xl font-bold text-[#c4008b] flex items-center">
                   <HelpCircle className="mr-2 h-5 w-5" />
                   Infos pratiques
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-xs sm:text-sm text-muted-foreground mb-4">
                   Vérifiez que le prestataire qui vous reçoit (à l&apos;intérieur ou à l&apos;extérieur) est agréé par
                   la CNAM, sinon vos factures ne seront pas remboursées.
                 </p>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-colors">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
-                      <FileText className="h-4 w-4 text-[#c4008b]" />
+                    <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <FileText className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#c4008b]" />
                     </div>
-                    <span className="text-sm">Guide des procédures</span>
+                    <span className="text-xs sm:text-sm">Guide des procédures</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-colors">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
-                      <Users className="h-4 w-4 text-[#c4008b]" />
+                    <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <Users className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#c4008b]" />
                     </div>
-                    <span className="text-sm">Liste des prestataires agréés</span>
+                    <span className="text-xs sm:text-sm">Liste des prestataires agréés</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-colors">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
-                      <Download className="h-4 w-4 text-[#c4008b]" />
+                    <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-[#c4008b]/10 flex-shrink-0">
+                      <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#c4008b]" />
                     </div>
-                    <span className="text-sm">Formulaires à télécharger</span>
+                    <span className="text-xs sm:text-sm">Formulaires à télécharger</span>
                   </div>
                 </div>
               </CardContent>
               <CardFooter className="pt-0 flex justify-between gap-2">
-                <Button variant="outline" size="sm" className="flex-1">
-                  <ChevronRight className="mr-1.5 h-4 w-4 rotate-180" />
+                <Button variant="outline" size="sm" className="flex-1 text-xs sm:text-sm">
+                  <ChevronRight className="mr-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4 rotate-180" />
                   Précédente
                 </Button>
-                <Button variant="outline" size="sm" className="flex-1">
+                <Button variant="outline" size="sm" className="flex-1 text-xs sm:text-sm">
                   Suivante
-                  <ChevronRight className="ml-1.5 h-4 w-4" />
+                  <ChevronRight className="ml-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </Button>
               </CardFooter>
             </Card>
@@ -231,16 +249,19 @@ export default function Home() {
                   date="25 Fév"
                   title="L'activité de la deuxième journée de la visite du Directeur général et de sa délégation qui l'accompagne en Algérie sœur"
                   category="Événements"
+                  description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
                 />
                 <NewsCard
                   date="18 Fév"
                   title="Signature d'une convention de partenariat entre la CNAM et l'Ordre National des Médecins"
                   category="Partenariats"
+                  description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
                 />
                 <NewsCard
                   date="10 Fév"
                   title="Lancement du nouveau système de gestion des remboursements"
                   category="Services"
+                  description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
                 />
               </div>
             </div>

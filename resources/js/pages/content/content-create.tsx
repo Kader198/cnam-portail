@@ -11,6 +11,10 @@ const breadcrumbs: BreadcrumbItem[] = [
         title: 'Content Management',
         href: '/content',
     },
+    {
+        title: 'Create Content',
+        href: '/content/create',
+    },
 ];
 
 export default function ContentCreate() {

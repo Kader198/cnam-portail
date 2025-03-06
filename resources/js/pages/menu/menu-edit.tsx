@@ -1,13 +1,14 @@
-import React from 'react';
-import { Head, useForm } from '@inertiajs/react';
-import { BreadcrumbItem } from '@/types';
-import AppLayout from '@/layouts/app-layout';
+import { IconSelector } from '@/components/icon-selector';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Switch } from '@/components/ui/switch';
+import AppLayout from '@/layouts/app-layout';
+import { BreadcrumbItem } from '@/types';
+import { Head, useForm } from '@inertiajs/react';
+import React from 'react';
 import toast from 'react-hot-toast';
 
 interface Menu {
@@ -16,6 +17,7 @@ interface Menu {
   menu_name_ar: string;
   location: string;
   is_active: boolean;
+  icon: string;
 }
 
 interface Props {
@@ -38,6 +40,7 @@ interface FormData {
   menu_name_ar: string;
   location: string;
   is_active: boolean;
+  icon: string;
 }
 
 export default function MenuEdit({ menu }: Props) {
@@ -46,6 +49,7 @@ export default function MenuEdit({ menu }: Props) {
     menu_name_ar: menu.menu_name_ar,
     location: menu.location,
     is_active: menu.is_active,
+    icon: menu.icon,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -138,6 +142,17 @@ export default function MenuEdit({ menu }: Props) {
                     </div>
                     {errors.is_active && (
                       <p className="text-sm text-red-500">{errors.is_active}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="icon">Icon</Label>
+                    <IconSelector
+                      value={data.icon}
+                      onChange={(value) => setData('icon', value)}
+                    />
+                    {errors.icon && (
+                      <p className="text-sm text-red-500">{errors.icon}</p>
                     )}
                   </div>
                 </div>

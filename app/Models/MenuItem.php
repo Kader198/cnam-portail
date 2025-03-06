@@ -9,14 +9,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class MenuItem extends Model
 {
     protected $table = 'menu_items';
-    protected $primaryKey = 'item_id';
+    protected $primaryKey = 'menu_item_id';
 
     protected $fillable = [
         'menu_id',
         'item_title',
         'item_title_ar',
         'url',
-        'parent_item_id',
+        'parent_id',
         'display_order',
         'target',
         'icon',
@@ -35,6 +35,6 @@ class MenuItem extends Model
 
     public function children(): HasMany
     {
-        return $this->hasMany(MenuItem::class, 'parent_item_id', 'item_id');
+        return $this->hasMany(MenuItem::class, 'parent_id', 'menu_item_id');
     }
-} 
+}

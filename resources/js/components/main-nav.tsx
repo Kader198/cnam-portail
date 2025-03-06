@@ -1,127 +1,93 @@
 "use client"
 
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import { Input } from "@/components/ui/input"
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+  navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu"
-import { Home, Users, Building2, FileText, Bell, Search, LogIn, UserPlus } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
+import type { Menu, MenuItem } from "@/types"
+import { Bell, Building2, FileText, Home, LogIn, Search, UserPlus, Users } from "lucide-react"
+import * as React from "react"
 
-const navItems = [
-  {
-    title: "Accueil",
-    href: "/",
-    icon: <Home className="h-4 w-4 mr-2" />,
-  },
-  {
-    title: "Assurés",
-    href: "/assures",
-    icon: <Users className="h-4 w-4 mr-2" />,
-    children: [
-      {
-        title: "Droits et obligations",
-        href: "/assures/droits-obligations",
-        description: "Connaître vos droits et obligations en tant qu'assuré",
-      },
-      {
-        title: "Procédures",
-        href: "/assures/procedures",
-        description: "Les démarches à suivre pour bénéficier des prestations",
-      },
-      {
-        title: "Remboursements",
-        href: "/assures/remboursements",
-        description: "Suivre l'état de vos remboursements",
-      },
-    ],
-  },
-  {
-    title: "Prestataires",
-    href: "/prestataires",
-    icon: <Building2 className="h-4 w-4 mr-2" />,
-    children: [
-      {
-        title: "Convention",
-        href: "/prestataires/convention",
-        description: "Les termes de la convention avec la CNAM",
-      },
-      {
-        title: "Facturation",
-        href: "/prestataires/facturation",
-        description: "Procédures de facturation des prestations",
-      },
-      {
-        title: "Agrément",
-        href: "/prestataires/agrement",
-        description: "Demande d'agrément pour les prestataires",
-      },
-    ],
-  },
-  {
-    title: "Employeurs",
-    href: "/employeurs",
-    icon: <Users className="h-4 w-4 mr-2" />,
-    children: [
-      {
-        title: "Affiliation",
-        href: "/employeurs/affiliation",
-        description: "Procédures d'affiliation des employés",
-      },
-      {
-        title: "Cotisations",
-        href: "/employeurs/cotisations",
-        description: "Gestion des cotisations sociales",
-      },
-      {
-        title: "Déclarations",
-        href: "/employeurs/declarations",
-        description: "Déclarations périodiques obligatoires",
-      },
-    ],
-  },
-  {
-    title: "Actualités",
-    href: "/actualites",
-    icon: <Bell className="h-4 w-4 mr-2" />,
-  },
-  {
-    title: "Documentation",
-    href: "/documentation",
-    icon: <FileText className="h-4 w-4 mr-2" />,
-  },
-  {
-    title: "Avis et Annonces",
-    href: "/avis-annonces",
-    icon: <Bell className="h-4 w-4 mr-2" />,
-  },
-  {
-    title: "Connexion",
-    href: "/login",
-    icon: <LogIn className="h-4 w-4 mr-2" />,
-  },
-  {
-    title: "Inscription",
-    href: "/register",
-    icon: <UserPlus className="h-4 w-4 mr-2" />,
-  },
-]
+// Icon mapping based on icon names
+const getIconComponent = (iconName: string) => {
+  const iconMap: { [key: string]: React.ReactNode } = {
+    "Home": <Home className="h-4 w-4 mr-2" />,
+    "Users": <Users className="h-4 w-4 mr-2" />,
+    "Building2": <Building2 className="h-4 w-4 mr-2" />,
+    "Bell": <Bell className="h-4 w-4 mr-2" />,
+    "FileText": <FileText className="h-4 w-4 mr-2" />,
+    "LogIn": <LogIn className="h-4 w-4 mr-2" />,
+    "UserPlus": <UserPlus className="h-4 w-4 mr-2" />,
+  }
+  return iconMap[iconName] || null
+}
 
 // Replace the MainNav component with this improved responsive version
-export function MainNav() {
+export function MainNav({ main_menu }: { main_menu: Menu[] }) {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false)
+
+  // Helper function to render menu items
+  const renderMenuItem = (item: MenuItem) => {
+    const isActive = window.location.pathname === item.url
+    const icon = getIconComponent(item.icon)
+
+    // Only render items that are top-level (parent_id is null)
+    if (item.parent_id !== null) {
+      return null
+    }
+
+    if (item.children && item.children.length > 0) {
+      return (
+        <NavigationMenuItem key={item.menu_item_id}>
+          <NavigationMenuTrigger>
+            {icon}
+            {item.title}
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {item.children.map((child) => (
+                <li key={child.menu_item_id} className="row-span-1">
+                  <a
+                    href={child.url}
+                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                  >
+                    <div className="text-sm font-medium leading-none flex items-center">
+                      {getIconComponent(child.icon)}
+                      {child.title}
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      )
+    }
+
+    return (
+      <NavigationMenuItem key={item.menu_item_id}>
+        <a href={item.url} className={navigationMenuTriggerStyle()}>
+          {icon}
+          {item.title}
+        </a>
+      </NavigationMenuItem>
+    )
+  }
+
+  // Filter top-level items for mobile menu
+  const topLevelItems = main_menu[0]?.items.filter(item => item.parent_id === null) || []
 
   return (
     <>
       {/* Mobile Search Overlay */}
-      <Sheet>   
+      <Sheet>
         <SheetTrigger asChild>
           <button id="search-trigger" className="hidden">
             Search
@@ -151,27 +117,27 @@ export function MainNav() {
                   <Input type="search" placeholder="Rechercher..." className="w-full pl-8" />
                 </div>
                 <div className="grid gap-1">
-                  {navItems.map((item) => (
-                    <React.Fragment key={item.href}>
+                  {topLevelItems.map((item) => (
+                    <React.Fragment key={item.menu_item_id}>
                       <a
-                        href={item.href}
+                        href={item.url}
                         className={cn(
                           "flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent",
-                          window.location.pathname === item.href && "bg-accent",
+                          window.location.pathname === item.url && "bg-accent",
                         )}
                       >
-                        {item.icon}
+                        {getIconComponent(item.icon)}
                         {item.title}
                       </a>
-                      {item.children && (
+                      {item.children && item.children.length > 0 && (
                         <div className="ml-4 mt-1 mb-2 grid gap-1 border-l pl-4">
                           {item.children.map((child) => (
                             <a
-                              key={child.href}
-                              href={child.href}
+                              key={child.menu_item_id}
+                              href={child.url}
                               className={cn(
                                 "flex items-center rounded-md px-3 py-2 text-sm hover:bg-accent",
-                                window.location.pathname === child.href && "bg-accent",
+                                window.location.pathname === child.url && "bg-accent",
                               )}
                             >
                               {child.title}
@@ -187,60 +153,25 @@ export function MainNav() {
           </Sheet>
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
-              {navItems.map((item) => {
-                if (!item.children) {
-                  return (
-                    <NavigationMenuItem key={item.href}>
-                      <a href={item.href} className={navigationMenuTriggerStyle()}>
-                        {item.icon}
-                        {item.title}
-                      </a>
-                    </NavigationMenuItem>
-                  )
-                }
-
-                return (
-                  <NavigationMenuItem key={item.href}>
-                    <NavigationMenuTrigger>
-                      {item.icon}
-                      {item.title}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                        {item.children.map((child) => (
-                          <li key={child.href} className="row-span-1">
-                            <a
-                              href={child.href}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            >
-                              <div className="text-sm font-medium leading-none">{child.title}</div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                {child.description}
-                              </p>
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                )
-              })}
+              {topLevelItems.map((item) => renderMenuItem(item))}
             </NavigationMenuList>
           </NavigationMenu>
 
           {/* Mobile Navigation Pills */}
           <div className="md:hidden w-full overflow-x-auto scrollbar-hide">
             <div className="flex space-x-1 py-1 px-1 min-w-max">
-              {navItems.map((item) => (
+              {topLevelItems.map((item) => (
                 <a
-                  key={item.href}
-                  href={item.href}
+                  key={item.menu_item_id}
+                  href={item.url}
                   className={cn(
                     "flex items-center whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium",
-                    window.location.pathname === item.href ? "bg-[#c4008b] text-[#c4008b]-foreground" : "bg-muted hover:bg-muted/80",
+                    window.location.pathname === item.url ? "bg-[#c4008b] text-[#c4008b]-foreground" : "bg-muted hover:bg-muted/80",
                   )}
                 >
-                  {React.cloneElement(item.icon, { className: "h-3 w-3 mr-1" })}
+                  <span className="mr-1">
+                    {getIconComponent(item.icon)}
+                  </span>
                   {item.title}
                 </a>
               ))}

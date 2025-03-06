@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\News;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class NewsSeeder extends Seeder
 {
@@ -47,7 +48,9 @@ class NewsSeeder extends Seeder
         ];
 
         foreach ($news as $item) {
+            $item['slug'] = Str::slug($item['title']);
+            $item['slug_ar'] = Str::slug($item['title_ar']);
             News::create($item);
         }
     }
-} 
+}

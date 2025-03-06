@@ -1,10 +1,8 @@
-import React from 'react';
-import { useForm } from '@inertiajs/react';
-import { Content } from '@/types';
+import LexicalEditor from '@/components/editor/lexical-editor';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
@@ -12,10 +10,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Label } from '@/components/ui/label';
-import LexicalEditor from '@/components/editor/lexical-editor';
+import { Textarea } from '@/components/ui/textarea';
+import { Content } from '@/types';
+import { useForm } from '@inertiajs/react';
+import type { FilePondFile, FilePondInitialFile } from 'filepond';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+import 'filepond/dist/filepond.min.css';
+import React from 'react';
+import { FilePond, registerPlugin } from 'react-filepond';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+
+registerPlugin(FilePondPluginImagePreview);
 
 interface Props {
   content?: Content;
@@ -24,6 +31,7 @@ interface Props {
 
 export default function ContentForm({ content, mode }: Props) {
   const { t } = useTranslation();
+  const [files, setFiles] = React.useState<FilePondInitialFile[]>([]);
   const { data, setData, post, put, processing, errors } = useForm({
     title: content?.title || '',
     title_ar: content?.title_ar || '',
@@ -35,8 +43,25 @@ export default function ContentForm({ content, mode }: Props) {
     meta_description_ar: content?.meta_description_ar || '',
     keywords: content?.keywords || '',
     keywords_ar: content?.keywords_ar || '',
-    featured_image: content?.featured_image || '',
+    featured_image: null as File | null,
   });
+
+  // Initialize FilePond with existing image if in edit mode
+  React.useEffect(() => {
+    if (content?.featured_image) {
+      setFiles([{
+        source: content.featured_image,
+        options: {
+          type: 'local',
+          file: {
+            name: content.featured_image.split('/').pop() || '',
+            size: 0,
+            type: 'image/*'
+          }
+        }
+      }]);
+    }
+  }, [content]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -214,10 +239,42 @@ export default function ContentForm({ content, mode }: Props) {
         {/* Featured Image */}
         <div className="md:col-span-2 space-y-2">
           <Label htmlFor="featured_image">{t('content.form.featured_image')}</Label>
-          <Input
-            id="featured_image"
-            value={data.featured_image}
-            onChange={(e) => setData('featured_image', e.target.value)}
+          <FilePond
+            files={files}
+            onupdatefiles={(newFiles: FilePondFile[]) => {
+              setFiles(newFiles.map(file => ({
+                source: file.source as string,
+                options: {
+                  type: 'local',
+                  file: file.file
+                }
+              })));
+              if (newFiles.length > 0) {
+                const file = newFiles[0].file as File;
+                setData('featured_image', file);
+              } else {
+                setData('featured_image', null);
+              }
+            }}
+            allowMultiple={false}
+            maxFiles={1}
+            acceptedFileTypes={['image/*']}
+            labelIdle={t('content.form.drag_drop_image')}
+            server={{
+              url: route('media.store'),
+              process: {
+                method: 'POST',
+                withCredentials: false,
+                headers: {},
+                timeout: 7000,
+                onload: (response: Response) => {
+                  return response;
+                },
+                onerror: (response: Response) => {
+                  return response.text();
+                },
+              },
+            } as any}
           />
           {errors.featured_image && (
             <div className="text-sm text-red-600">{errors.featured_image}</div>

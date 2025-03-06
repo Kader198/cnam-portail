@@ -1,17 +1,14 @@
-import React from 'react';
-import { Head, useForm } from '@inertiajs/react';
-import { BreadcrumbItem } from '@/types';
-import AppLayout from '@/layouts/app-layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Menu } from '@/types';
+import AppLayout from '@/layouts/app-layout';
+import { BreadcrumbItem, Menu } from '@/types';
+import { Head, useForm } from '@inertiajs/react';
+import React from 'react';
 
 interface MenuItem {
-  item_id?: number;
+  menu_item_id?: number;
   menu_id: number;
   item_title: string;
   item_title_ar: string;
@@ -46,7 +43,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function MenuItemForm({ menuItem, menus, parentItems, mode }: Props) {
-  const { data, setData, post, put, processing, errors } = useForm<MenuItem>({
+  const { data, setData, post, put, processing, errors } = useForm({
     menu_id: menuItem?.menu_id || '',
     item_title: menuItem?.item_title || '',
     item_title_ar: menuItem?.item_title_ar || '',
@@ -63,7 +60,7 @@ export default function MenuItemForm({ menuItem, menus, parentItems, mode }: Pro
     if (mode === 'create') {
       post(route('menu-items.store'));
     } else {
-      put(route('menu-items.update', menuItem?.item_id));
+      put(route('menu-items.update', menuItem?.menu_item_id));
     }
   };
 
@@ -102,16 +99,16 @@ export default function MenuItemForm({ menuItem, menus, parentItems, mode }: Pro
                   <div className="space-y-2">
                     <Label htmlFor="parent_item_id">Parent Item</Label>
                     <Select
-                      value={data.parent_item_id?.toString() || ''}
-                      onValueChange={(value) => setData('parent_item_id', value ? parseInt(value) : null)}
+                      value={data.parent_item_id?.toString() || 'null'}
+                      onValueChange={(value) => setData('parent_item_id', value === 'null' ? null : parseInt(value))}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select a parent item" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">None</SelectItem>
+                        <SelectItem value="null">None</SelectItem>
                         {parentItems.map((item) => (
-                          <SelectItem key={item.item_id} value={item.item_id.toString()}>
+                          <SelectItem key={item.menu_item_id} value={item.menu_item_id?.toString() || ''}>
                             {item.item_title}
                           </SelectItem>
                         ))}

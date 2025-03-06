@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\News;
 use App\Models\Content;
 use App\Models\Setting;
@@ -10,6 +11,7 @@ use App\Models\Department;
 use App\Models\Glossary;
 use App\Models\Faq;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class WelcomeController extends Controller
 {
@@ -68,7 +70,21 @@ class WelcomeController extends Controller
             ->take(4)
             ->get();
 
-        return response()->json([
+        $menus = Menu::orderBy('created_at', 'desc')
+            ->with('items')
+            ->get();
+
+        $mainMenus = Menu::where('location', 'header')
+            ->orderBy('created_at', 'desc')
+            ->with('items', 'items.children')
+            ->get();
+
+        $footerMenus = Menu::where('location', 'footer')
+            ->orderBy('created_at', 'desc')
+            ->with('items', 'items.children')
+            ->get();
+
+        return Inertia::render('welcome/welcome', [
             'welcome_message' => $welcomeContent,
             'latest_news' => $latestNews,
             'testimonials' => $testimonials,
@@ -78,6 +94,9 @@ class WelcomeController extends Controller
             'departments' => $departments,
             'faqs' => $faqs,
             'glossary_terms' => $glossaryTerms,
+            'menus' => $menus,
+            'main_menu' => $mainMenus,
+            'footer_menu' => $footerMenus
         ]);
     }
 
@@ -126,4 +145,4 @@ class WelcomeController extends Controller
 
         return response()->json($glossary);
     }
-} 
+}
