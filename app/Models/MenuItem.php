@@ -20,7 +20,8 @@ class MenuItem extends Model
         'display_order',
         'target',
         'icon',
-        'css_class'
+        'css_class',
+        'is_active'
     ];
 
     public function menu(): BelongsTo

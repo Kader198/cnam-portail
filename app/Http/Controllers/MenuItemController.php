@@ -85,12 +85,22 @@ class MenuItemController extends Controller
             'target' => 'required|in:_self,_blank',
             'icon' => 'nullable|string|max:255',
             'css_class' => 'nullable|string|max:255',
+            'is_active' => 'boolean',
         ]);
 
         $menu_item->update($validated);
 
         return redirect()->route('menu-items.index')
             ->with('success', 'Menu item updated successfully.');
+    }
+
+    public function toggleStatus(MenuItem $menu_item)
+    {
+        $menu_item->update([
+            'is_active' => !$menu_item->is_active
+        ]);
+
+        return back()->with('success', 'Menu item status updated successfully.');
     }
 
     public function destroy(MenuItem $menu_item)

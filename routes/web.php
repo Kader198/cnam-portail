@@ -44,6 +44,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Menu Items Management Routes
     Route::resource('menu-items', MenuItemController::class);
+    Route::put('menu-items/{menu_item}/toggle-status', [MenuItemController::class, 'toggleStatus'])->name('menu-items.toggle-status');
 
     // SEO Analytics Routes
     Route::resource('seo-analytics', SeoAnalyticController::class);
@@ -53,8 +54,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Glossary Management Routes
     Route::resource('glossary', GlossaryController::class);
-    
+
 });
 
-require __DIR__.'/settings.php';
-require __DIR__.'/auth.php';
+require __DIR__ . '/settings.php';
+require __DIR__ . '/auth.php';

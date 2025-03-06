@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { Head, Link, router } from '@inertiajs/react';
-import { BreadcrumbItem } from '@/types';
-import { Badge } from '@/components/ui/badge';
-import AppLayout from '@/layouts/app-layout';
-import { Menu, Pencil, Trash2, ArrowRight, ArrowLeft } from 'lucide-react';
-import toast from 'react-hot-toast';
-import { DataTable, Column } from '@/components/ui/data-table';
 import { DeleteConfirmationDialog } from '@/components/delete-confirmation-dialog';
+import { Badge } from '@/components/ui/badge';
+import { Column, DataTable } from '@/components/ui/data-table';
+import { Switch } from '@/components/ui/switch';
+import AppLayout from '@/layouts/app-layout';
+import { BreadcrumbItem } from '@/types';
+import { Head, router } from '@inertiajs/react';
+import { ArrowRight, Trash2 } from 'lucide-react';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface MenuItem {
-  item_id: number;
+  menu_item_id: number;
   menu_id: number;
   item_title: string;
   item_title_ar: string;
@@ -19,6 +20,7 @@ interface MenuItem {
   target: string;
   icon: string | null;
   css_class: string | null;
+  is_active: boolean;
   menu: {
     menu_name: string;
   };
@@ -63,7 +65,7 @@ export default function MenuItemsList({ menuItems, selectedMenuId }: Props) {
 
   const handleDeleteConfirm = () => {
     if (itemToDelete) {
-      router.delete(route('menu-items.destroy', { menu_item: itemToDelete.item_id }), {
+      router.delete(route('menu-items.destroy', { menu_item: itemToDelete.menu_item_id }), {
         onSuccess: () => {
           toast.success('Menu item deleted successfully');
           setDeleteDialogOpen(false);
@@ -74,6 +76,17 @@ export default function MenuItemsList({ menuItems, selectedMenuId }: Props) {
         },
       });
     }
+  };
+
+  const handleToggleStatus = (item: MenuItem) => {
+    router.put(route('menu-items.toggle-status', { menu_item: item.menu_item_id }), {}, {
+      onSuccess: () => {
+        toast.success('Menu item status updated successfully');
+      },
+      onError: () => {
+        toast.error('Failed to update menu item status');
+      },
+    });
   };
 
   const columns: Column<MenuItem>[] = [
@@ -120,6 +133,21 @@ export default function MenuItemsList({ menuItems, selectedMenuId }: Props) {
       header: 'Order',
       accessorKey: 'display_order',
       cell: (item) => item.display_order,
+    },
+    {
+      header: 'Status',
+      accessorKey: 'is_active',
+      cell: (item) => (
+        <div className="flex items-center space-x-2">
+          <Switch
+            checked={item.is_active}
+            onCheckedChange={() => handleToggleStatus(item)}
+          />
+          <Badge variant={item.is_active ? 'default' : 'destructive'}>
+            {item.is_active ? 'Active' : 'Inactive'}
+          </Badge>
+        </div>
+      ),
     },
     {
       header: 'Actions',
@@ -171,7 +199,7 @@ export default function MenuItemsList({ menuItems, selectedMenuId }: Props) {
 
       <div className="py-3">
         <div className="mx-auto sm:px-6 lg:px-4">
-        
+
           <DataTable
             title="Menu Items"
             data={menuItems}
