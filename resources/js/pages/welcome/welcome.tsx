@@ -261,16 +261,19 @@ export default function Home() {
                   quote="Merci j'ai compris je vous demande de continuer votre politique de communication avec vos adhérants."
                   author="Ba Abdellahi"
                   date="mercredi 5 mars 2014 16:26"
+                  rating={2}
                 />
                 <TestimonialCard
                   quote="Je tiens à remercier la CNAM pour la rapidité de traitement de mon dossier."
                   author="Mohamed Lemine"
                   date="lundi 3 février 2014 10:15"
+                  rating={2}
                 />
                 <TestimonialCard
                   quote="Le nouveau site est beaucoup plus facile à utiliser, félicitations pour cette amélioration."
                   author="Fatima Sy"
                   date="vendredi 24 janvier 2014 09:30"
+                  rating={5}
                 />
               </div>
             </div>
